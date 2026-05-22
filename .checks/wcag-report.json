@@ -14,21 +14,5 @@
         "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.98 (foreground color: #ffffff, background color: #80cc28, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
       }
     ]
-  },
-  {
-    "url": "http://localhost:8080/snapshot.html",
-    "id": "scrollable-region-focusable",
-    "impact": "serious",
-    "description": "Ensure elements that have scrollable content are accessible by keyboard in Safari",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/scrollable-region-focusable?application=webdriverjs",
-    "nodes": [
-      {
-        "target": [
-          ".hljs"
-        ],
-        "html": "<code aria-busy=\"false\" class=\"hljs xml\">",
-        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
-      }
-    ]
   }
 ]
