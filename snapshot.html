@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="nl"><head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="text/html; charset=utf-8" http-equiv="content-type">
-<meta name="generator" content="ReSpec 35.8.0">
+<meta name="generator" content="ReSpec 37.0.0">
 <style>
 dfn{cursor:pointer}
 .dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
@@ -16,6 +16,7 @@ dfn{cursor:pointer}
 .dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
 .dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
 .dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
 .dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
 .dfn-panel a[href]:hover{border-bottom-width:1px}
 .dfn-panel ul{padding:0}
@@ -62,13 +63,17 @@ a.bibref{text-decoration:none}
 .respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
 }
 #references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
 cite .bibref{font-style:italic}
 a[href].orcid{padding-left:4px;padding-right:4px}
 a[href].orcid>svg{margin-bottom:-2px}
 ol.tof,ul.tof{list-style:none outside none}
 .caption{margin-top:.5em;font-style:italic}
 #issue-summary>ul{column-count:2}
-#issue-summary li{list-style:none;display:inline-block}
+#issue-summary li{list-style:none}
 details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
 details.respec-tests-details>*{padding-right:2em}
 details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
@@ -77,7 +82,8 @@ details.respec-tests-details>ul{width:100%;margin-top:-.3em}
 details.respec-tests-details>li{padding-left:1em}
 .self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
 aside.example .marker>a.self-link{color:inherit}
-.header-wrapper{display:flex;align-items:baseline;position:relative;left:-.5em}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2):has(+a.self-link){position:relative;left:-.5em}
 :is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-.7em;font-size:1rem;opacity:.5}
 :is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
 :is(h2,h3)+a.self-link{top:-.2em}
@@ -88,6 +94,8 @@ dd{margin-left:0}
 @media print{
 .removeOnSave{display:none}
 }
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
 </style>
 <style id="respec-nlgov">
 img.license{float:left;padding-right:5px;background:0 0}
@@ -1354,7 +1362,7 @@ ul.index code{color:inherit}
 }</script>
 <link rel="stylesheet" href="https://tools.geostandaarden.nl/respec/style/base.css"></head>
 
-<body class="h-entry toc-inline"><div class="head">
+<body class="h-entry"><div class="head">
     <a class="logo" href="https://www.geonovum.nl/geo-standaarden"><img alt="Geonovum" height="67" id="Geonovum" src="https://docs.geostandaarden.nl/media/Geonovum.svg" width="132">
   </a> <h1 id="title" class="title">Geonovum template voor ReSpec</h1>
     
@@ -1387,7 +1395,9 @@ ul.index code{color:inherit}
       <dt>Doe mee:</dt><dd>
     <a href="https://github.com/Geonovum/NL-ReSpec-template/">GitHub Geonovum/NL-ReSpec-template</a>
   </dd><dd>
-    <a href="https://github.com/Geonovum/NL-ReSpec-template/issues/">Dien een melding in</a>
+    <a href="https://github.com/Geonovum/NL-ReSpec-template/issues/">All issues</a>
+  </dd><dd>
+    <a href="https://github.com/Geonovum/NL-ReSpec-template/issues/new/choose">Dien een melding in</a>
   </dd><dd>
     <a href="https://github.com/Geonovum/NL-ReSpec-template/commits/">Revisiehistorie</a>
   </dd><dd>
@@ -1420,7 +1430,7 @@ ul.index code{color:inherit}
 </ul>
 <p>This report contains their detailed findings. <strong>TBD abstract of Geonovum conclusions</strong></p>
 </section>
-<section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is een document zonder officiële status.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#reading-guide"><bdi class="secno">1.1 </bdi>Reading guide</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conclusion"><bdi class="secno">2. </bdi>Conclusion</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#future-work"><bdi class="secno">2.1 </bdi>Future work</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">3. </bdi>Conformiteit</a></li></ol></nav>
+<section id="sotd" class="introductory"><h2>Status van dit document</h2><p>Dit is een document zonder officiële status.</p></section><nav id="toc"><h2 class="introductory" id="inhoudsopgave">Inhoudsopgave</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status van dit document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#reading-guide"><bdi class="secno">1.1 </bdi>Reading guide</a></li></ol></li><li class="tocline"><a class="tocxref" href="#topic-1-fraunhofer"><bdi class="secno">2. </bdi>Topic 1 Fraunhofer</a></li><li class="tocline"><a class="tocxref" href="#topic-1-collaborall"><bdi class="secno">3. </bdi>Topic 1 Collaborall</a></li><li class="tocline"><a class="tocxref" href="#topic-2-collaborall"><bdi class="secno">4. </bdi>Topic 2 Collaborall</a></li><li class="tocline"><a class="tocxref" href="#topic-2-geoinsights"><bdi class="secno">5. </bdi>Topic 2 Geoinsights</a></li><li class="tocline"><a class="tocxref" href="#topic-2-clappform"><bdi class="secno">6. </bdi>Topic 2 Clappform</a></li><li class="tocline"><a class="tocxref" href="#topic-2-tudelft"><bdi class="secno">7. </bdi>Topic 2 TUDelft</a></li><li class="tocline"><a class="tocxref" href="#conclusion"><bdi class="secno">8. </bdi>Conclusion</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#future-work"><bdi class="secno">8.1 </bdi>Future work</a></li></ol></li><li class="tocline"><a class="tocxref" href="#conformance"><bdi class="secno">9. </bdi>Conformiteit</a></li></ol></nav>
 
 
 <section id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div>
@@ -1434,21 +1444,21 @@ ul.index code{color:inherit}
 <section id="reading-guide"><div class="header-wrapper"><h3 id="x1-1-reading-guide"><bdi class="secno">1.1 </bdi>Reading guide</h3><a class="self-link" href="#reading-guide" aria-label="Permalink for Section 1.1"></a></div>
 <p>The rest of this document contains the results of all three research topics, written by the participants. It ends with the Conclusion chapter, which describes the main findings and the way forward as perceived by Geonovum.</p>
 </section></section>
-<section class="informative"><p>#Topic 1 Fraunhofer</p>
+<section class="informative" id="topic-1-fraunhofer"><div class="header-wrapper"><h2 id="x2-topic-1-fraunhofer"><bdi class="secno">2. </bdi>Topic 1 Fraunhofer</h2><a class="self-link" href="#topic-1-fraunhofer" aria-label="Permalink for Section 2."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
 </section>
-<section class="informative"><p>#Topic 1 Collaborall</p>
+<section class="informative" id="topic-1-collaborall"><div class="header-wrapper"><h2 id="x3-topic-1-collaborall"><bdi class="secno">3. </bdi>Topic 1 Collaborall</h2><a class="self-link" href="#topic-1-collaborall" aria-label="Permalink for Section 3."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
 </section>
-<section class="informative"><p>#Topic 2 Collaborall</p>
+<section class="informative" id="topic-2-collaborall"><div class="header-wrapper"><h2 id="x4-topic-2-collaborall"><bdi class="secno">4. </bdi>Topic 2 Collaborall</h2><a class="self-link" href="#topic-2-collaborall" aria-label="Permalink for Section 4."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
 </section>
-<section class="informative"><p>#Topic 2 Geoinsights</p>
+<section class="informative" id="topic-2-geoinsights"><div class="header-wrapper"><h2 id="x5-topic-2-geoinsights"><bdi class="secno">5. </bdi>Topic 2 Geoinsights</h2><a class="self-link" href="#topic-2-geoinsights" aria-label="Permalink for Section 5."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
 </section>
-<section class="informative"><p>#Topic 2 Clappform</p>
+<section class="informative" id="topic-2-clappform"><div class="header-wrapper"><h2 id="x6-topic-2-clappform"><bdi class="secno">6. </bdi>Topic 2 Clappform</h2><a class="self-link" href="#topic-2-clappform" aria-label="Permalink for Section 6."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
 </section>
-<section class="informative"><p>#Topic 2 TUDelft</p>
+<section class="informative" id="topic-2-tudelft"><div class="header-wrapper"><h2 id="x7-topic-2-tudelft"><bdi class="secno">7. </bdi>Topic 2 TUDelft</h2><a class="self-link" href="#topic-2-tudelft" aria-label="Permalink for Section 7."></a></div><p><em>Dit onderdeel is niet-normatief.</em></p>
 </section>
-<section id="conclusion"><div class="header-wrapper"><h2 id="x2-conclusion"><bdi class="secno">2. </bdi>Conclusion</h2><a class="self-link" href="#conclusion" aria-label="Permalink for Section 2."></a></div>
+<section id="conclusion"><div class="header-wrapper"><h2 id="x8-conclusion"><bdi class="secno">8. </bdi>Conclusion</h2><a class="self-link" href="#conclusion" aria-label="Permalink for Section 8."></a></div>
 <p><strong>to be filled in later</strong></p>
-<section id="future-work"><div class="header-wrapper"><h3 id="x2-1-future-work"><bdi class="secno">2.1 </bdi>Future work</h3><a class="self-link" href="#future-work" aria-label="Permalink for Section 2.1"></a></div>
+<section id="future-work"><div class="header-wrapper"><h3 id="x8-1-future-work"><bdi class="secno">8.1 </bdi>Future work</h3><a class="self-link" href="#future-work" aria-label="Permalink for Section 8.1"></a></div>
 <p><strong>to be filled in later</strong></p>
 </section></section>
 
@@ -1460,7 +1470,7 @@ ul.index code{color:inherit}
 
 
 
-<section id="conformance"><div class="header-wrapper"><h2 id="x3-conformiteit"><bdi class="secno">3. </bdi>Conformiteit</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 3."></a></div><p>Naast onderdelen die als niet-normatief gemarkeerd zijn, zijn ook alle diagrammen, voorbeelden, en noten in dit document niet-normatief. Verder is alles in dit document normatief.</p>
+<section id="conformance"><div class="header-wrapper"><h2 id="x9-conformiteit"><bdi class="secno">9. </bdi>Conformiteit</h2><a class="self-link" href="#conformance" aria-label="Permalink for Section 9."></a></div><p>Naast onderdelen die als niet-normatief gemarkeerd zijn, zijn ook alle diagrammen, voorbeelden, en noten in dit document niet-normatief. Verder is alles in dit document normatief.</p>
 <section id="tof">
 <section id="index" class="appendix"><div class="header-wrapper"><h4 id="index-0">Index</h4><a class="self-link" href="#index" aria-label="Permalink for this Appendix"></a></div>
 
@@ -1493,8 +1503,11 @@ function setupPanel() {
 }
 
 function panelListener() {
-  /** @type {HTMLElement} */
+  /** @type {HTMLElement | null} */
   let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
   return event => {
     const { target, type } = event;
 
@@ -1502,24 +1515,34 @@ function panelListener() {
 
     // For keys, we only care about Enter key to activate the panel
     // otherwise it's activated via a click.
-    if (type === "keydown" && event.key !== "Enter") return;
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
 
     const action = deriveAction(event);
 
     switch (action) {
       case "show": {
         hidePanel(panel);
-        /** @type {HTMLElement} */
+        /** @type {HTMLElement | null} */
         const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
         panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
-        const coords = deriveCoordinates(event);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
         displayPanel(dfn, panel, coords);
         break;
       }
       case "dock": {
-        panel.style.left = null;
-        panel.style.top = null;
-        panel.classList.add("docked");
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
         break;
       }
       case "hide": {
@@ -1570,7 +1593,8 @@ function deriveAction(event) {
     if (hitALink) {
       return target.classList.contains("self-link") ? "hide" : "dock";
     }
-    const panel = target.closest(".dfn-panel");
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
     return panel.classList.contains("docked") ? "hide" : "none";
   }
   if (document.querySelector(".dfn-panel:not([hidden])")) {
@@ -1614,9 +1638,9 @@ function displayPanel(dfn, panel, { x, y }) {
     const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
     const newCaretOffset = left - newLeft;
     panel.style.left = `${newLeft}px`;
-    /** @type {HTMLElement} */
+    /** @type {HTMLElement | null} */
     const caret = panel.querySelector(".caret");
-    caret.style.left = `${newCaretOffset}px`;
+    if (caret) caret.style.left = `${newCaretOffset}px`;
   }
 
   // As it's a dialog, we trap focus.
@@ -1665,6 +1689,9 @@ function trapFocus(panel, dfn) {
 function createTrapListener(anchors, panel, dfn) {
   const lastIndex = anchors.length - 1;
   let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
   return event => {
     switch (event.key) {
       // Hitting "Tab" traps us in a nice loop around elements.
@@ -1694,7 +1721,7 @@ function createTrapListener(anchors, panel, dfn) {
   };
 }
 
-/** @param {HTMLElement} panel */
+/** @param {HTMLElement | null} panel */
 function hidePanel(panel) {
   if (!panel) return;
   panel.hidden = true;
