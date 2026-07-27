@@ -10,7 +10,7 @@ The API consists of a REST-over-HTTP part for managing the data and accessing it
 
 ## FROST-Server
 
-<img width="300px" align="right" src="FROST-Server-darkgrey.svg">
+<img width="250px" align="right" alt="FROST-Server logo" style="margin: 0.3em" src="Topic_1_Fraunhofer/FROST-Server-darkgrey.svg">
 
 [FROST-Server](https://github.com/FraunhoferIOSB/FROST-Server) is the reference implementation of the SensorThings API.
 It is licensed using the LGPL 3.0 license and implements all parts of the spec.
@@ -26,7 +26,10 @@ When running in a container environment, FROST-Server consists of separate conta
 These containers have to state and can be duplicated as required to satisfy the load put on the system.
 The separate FROST-Server containers communicate with each other using a message bus, so that when an update is made through one container, the other containers are notified so they can send push notifications to any users that have subscriptions on the changed entities.
 
-![A typical FROST-Server deployment](Deployment.drawio.png)
+<figure id="fig-deployment">
+  <img src="Topic_1_Fraunhofer/Deployment.drawio.png" alt="A typical FROST-Server deployment." />
+  <figcaption>A typical FROST-Server deployment.</figcaption>
+</figure>
 
 The data that is managed by the system is stored on a PostgreSQL database server with PostGIS extensions.
 This database server writes the data to a persistent volume, which is the only part of the system that is persitent over restarts.
@@ -169,13 +172,18 @@ The server at Brabandse Delta is available under the following URLs:
 
 ## The SensorThings API Data model and extensions
 
+The SensorThings API version 1.1 defines a core data model that is based on O&M version 2.
+This core data model can easily be extended with additional classes and attributes.
 
 ### Core Data Model
 
 The core data model of version 1.1 of the SensorThings API consists of 9 classes, 8 relations between those classes.
 The following diagram shows the UML representation of the data model:
 
-![SensorThings API Core data model](Datamodel-SensorThingsApi-Sensing.drawio.png)
+<figure id="fig-sensing-data-model">
+  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-Sensing.drawio.png" alt="SensorThings API Core data model." />
+  <figcaption>SensorThings API Core data model.</figcaption>
+</figure>
 
 A detailed description of each class and its properties and relations can be found in the specification: [OGC 18-088](https://docs.ogc.org/is/18-088/18-088.html#sensing-entities1).
 
@@ -184,14 +192,20 @@ A detailed description of each class and its properties and relations can be fou
 The standard tasking extension [OGC 17-079r1](https://docs.ogc.org/is/17-079r1/17-079r1.html) can be used to model Actuators, their tasking capabilities, and the task send to the actuators.
 The extension adds three extra classes to the SensorThings data model, shown in the figure below in orange.
 
-![SensorThings API Tasking data model extension](Datamodel-SensorThingsApi-Tasking.drawio.png)
+<figure id="fig-tasking-data-model">
+  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-Tasking.drawio.png" alt="SensorThings API Tasking data model extension." />
+  <figcaption>SensorThings API Tasking data model extension.</figcaption>
+</figure>
 
 In FROST-Server the tasking data model extension can be enabled using the environment variable `plugins_actuation_enable=true`.
 
 ### Extension: OpenCitySense
 
-To make the complexities of sensor management more manageable, Fraunhofer IOSB started an internal research project to design the concept for a sensor management system, based on the OGC SensorThings API, and create an implementation of this system.
+To make the complexities of sensor management more manageable, Fraunhofer IOSB started an internal research project to design the concept for a sensor management system, based on the OGC SensorThings API, and create an implementation of this system: [OpenCitySense](https://fraunhoferiosb.github.io/FROST-Server/extensions/DataModel-OpenCitySense.html).
 
+The main reason that sensor management is complex is that there are many different types of sensors, from many different vendors, using many different communication protocols.
+The result is that a sensor management system consists of many different sub-systems, and these sub-systems all store a part of the management data of each sensor that they (partially) manage.
+The management data of each sensor is thus spread out over many systems, and that makes coordination of this data and control over these subsystems problematic.
 Since the [SensorThings API version 1.1](https://docs.ogc.org/is/18-088/18-088.html) is extendible by design, and already comes with several extensions, the architecture can be greatly simplified by using the SensorThings API service as the central data store for all sensor related data (figure below).
 This means that all components communicate through a single service, reducing the number of interconnects between components and reducing the spread of primary information across components.
 
@@ -199,10 +213,13 @@ The standard [tasking extension](https://docs.ogc.org/is/17-079r1/17-079r1.html)
 The connector concept can then be extended to not just be a one-way ETL process, but to take an active role in the sensor registration process on the LoRaWAN stack.
 It can receive information about new or updated sensors from the SensorThings service, and automatically take all required registration actions in the communication infrastructure.
 
-![OpenCitySense Architecture](OpenCitySense-Architecture-components-simplified.drawio.png "OpenCitySense Archtiecture")
+<figure id="fig-ocs-arch">
+  <img src="Topic_1_Fraunhofer/OpenCitySense-Architecture-components-simplified.drawio.png" alt="OpenCitySense Architecture." />
+  <figcaption>OpenCitySense Architecture.</figcaption>
+</figure>
 
 Besides greatly simplifying the architecture, a second major advantage to using the SensorThing API service for all data storage is that it offers a consistent, powerful API for managing relational data.
-This makes all data relevant for managing sensors and their data available in a unified, consistent way, and management tools or other clients do not need to implement multiple APIs.
+This makes all data relevant for managing sensors and their data available in a unified, consistent way, and management tools or other clients do not need to implement multiple APIs and access data in multiple services.
 While all publicly relevant sensor data and metadata can be stored in the core data model of the SensorThings API, internal management data can be stored in a custom data model extension.
 Since this does not alter the core data model of the SensorThings API, clients implementing only the Sensing part will not be affected by this data model extension.
 
@@ -215,7 +232,10 @@ This means that regardless of sensor brand or type, the management GUI can offer
 To allow the representation of device management information, a data model extension has been designed for the data models of the SensorThings API and the tasking extension.
 The extended data mode is depicted in the following image.
 
-![OpenCitySense Data Model](Datamodel-OpenCitySense.drawio.png "OpenCitySense Data Model")
+<figure id="fig-ocs-data-model">
+  <img src="Topic_1_Fraunhofer/Datamodel-OpenCitySense.drawio.png" alt="OpenCitySense Data Model." />
+  <figcaption>OpenCitySense Data Model.</figcaption>
+</figure>
 
 Connectors and Devices are modelled as Things.
 To make it easier to distinguish between different types of Things, a "type" field has been added to the Thing entity type that indicates the type of the thing.
@@ -272,7 +292,10 @@ The configDefinition of a DeviceModel may thus have three sections:
 - `configDefinition/deviceModel`: Definitions of fields that the connector requires in the `properties` of a `DeviceModel` of devices that it manages.
   These should be shown when creating a new DeviceModel, or when linking an existing DeviceModel to the DeviceModel of a Connector.
 
-![Configuration Definitions](OpenCitySense-ConfigurationDefinitions.drawio.png "Configuration Definitions")
+<figure id="fig-ocs-conf">
+  <img src="Topic_1_Fraunhofer/OpenCitySense-ConfigurationDefinitions.drawio.png" alt="OpenCitySense Configuration Definitions." />
+  <figcaption>OpenCitySense Configuration Definitions.</figcaption>
+</figure>
 
 Using these schema definitions, a user interface can generate all the forms required for onboarding and managing both connectors and devices.
 
@@ -281,7 +304,7 @@ Using these schema definitions, a user interface can generate all the forms requ
 
 From the point of view of the User Interface the workflow for onboarding a sensor is as follows:
 
-<pre class="mermaid">
+```mermaid
 sequenceDiagram
   participant SensorManager as Sensor Manager
   participant FROST as FROST-Server
@@ -298,12 +321,12 @@ sequenceDiagram
   FROST -->> -SensorManager: @id
   Connector -->> Connector: Onboard Device
   Connector -->> -FROST: Update Task: Done
-</pre>
+```
 
 Assuming a suitable DeviceModel already exists for the device to be onboarded, the user interface only needs to create a Thing for the device and then create a Task for the connector to onboard the device.
 Most of the work is done by the Connector, as can be seen in the workflow focusing on what the Connector does after the onboarding Task is created:
 
-<pre class="mermaid">
+```mermaid
 sequenceDiagram
   participant SensorManager as Sensor Manager
   participant FROST as FROST-Server
@@ -333,7 +356,7 @@ sequenceDiagram
   FROST -->> -Connector: Data
   Connector ->> Connector: Set Up Decoder
   Connector ->> FROST: PATCH Sensor(x)/Configuration<br>Active
-</pre>
+```
 
 
 
@@ -350,7 +373,10 @@ The finer details of the Projects extension can be found in [its documentation](
 
 The image below shows the core STA data model in blue, with the security extension in yellow.
 
-![Projects extension data model](Datamodel-Projects.drawio.png)
+<figure id="fig-projects-model">
+  <img src="Topic_1_Fraunhofer/Datamodel-Projects.drawio.png" alt="Projects extension data model." />
+  <figcaption>Projects extension data model.</figcaption>
+</figure>
 
 To be able to take user information into account when determining which actions a user can do on individual entities, the user and its roles need to be connected to the data model.
 The Projects extension does this by introducing a `Project` entity type.
