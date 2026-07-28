@@ -223,7 +223,7 @@ This makes all data relevant for managing sensors and their data available in a 
 While all publicly relevant sensor data and metadata can be stored in the core data model of the SensorThings API, internal management data can be stored in a custom data model extension.
 Since this does not alter the core data model of the SensorThings API, clients implementing only the Sensing part will not be affected by this data model extension.
 
-Sensor configuration parameters are modelled using the [SWE Common Data Model Encoding Standard](https://www.ogc.org/publications/standard/swecommon/), and translated by the connector into a form that the sensor understands.
+Sensor configuration parameters are modelled using JSON-Schema, and translated by the connector into a form that the sensor understands.
 This means that regardless of sensor brand or type, the management GUI can offer a consistent interface for changing sensor settings.
 
 
