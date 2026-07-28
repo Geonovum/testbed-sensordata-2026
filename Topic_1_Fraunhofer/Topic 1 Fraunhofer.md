@@ -5,7 +5,7 @@
 The OGC SensorThings API is an implementation Data Model of OMS, combined with a Request/Response and a Publish/Subscribe API.
 It is designed to enable the management and sharing of sensor data, allowing users to approach the data in the way that fits their use case.
 
-The API consists of a REST-over-HTTP part for managing the data and accessing it using requests, and an MQTT part that enables push-notifications when data changes.
+The API consists of a data model based on the OGC/ISO _Observations and Measurements_ conceptual model, a REST-over-HTTP part for managing the data and accessing it using requests, and an MQTT part that enables push-notifications when data changes.
 
 
 ## FROST-Server
@@ -390,6 +390,18 @@ User-entities can be directly linked to Role-entities, or indirectly through Use
 - If a user is indirectly linked to a role, the user has that role only on the entities linked to the project linked to the same UserProjectRole entity.
 
 ObservedProperty entites are shared across Projects and can thus only be edited by users with global `create`, `update` or `delete` rights.
+
+## Conclusions
+
+Setting up a FROST-Server with the core SensorThings API data model is trivial.
+The hard part is tuning the server to fit the desired use case, since there are many extension options for the data model, and ways to deal with authentication and authorisation.
+Testbeds, such as this one, are a good way to gather requirements that are not directly obvious.
+
+Also, the SensorThings API standard is a rather large and complex standard, since the domain of observational data publishing itself is quite complex.
+A testbed is a good way for people to experiment, discover limitations, and discuss solutions that others may already have found.
+
+During the testbed many questions were [asked and answered](https://github.com/Geonovum/testbed-sensordata-2026/discussions).
+In quite a few cases ([#3](https://github.com/Geonovum/testbed-sensordata-2026/discussions/3), [#12](https://github.com/Geonovum/testbed-sensordata-2026/discussions/12), [#14](https://github.com/Geonovum/testbed-sensordata-2026/discussions/14)) the underlying problem of the question was already recognised by the standards working group, and fixed in version 2.0 of the SensorThings API that is currently under vote, or in a proposed extension.
 
 
 
