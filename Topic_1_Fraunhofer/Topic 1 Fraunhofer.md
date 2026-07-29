@@ -366,7 +366,7 @@ Security is an important aspect of any API, especially when the API is use for b
 In many cases, a simple all-or-nothing approach is sufficient, but when multiple groups of users use the same service, yet should not be able to change, or even read, each others data, a more fine-grained approach to access control is required.
 FROST-Server comes with a highly-configurable fine-grained access control engine, but setting up the access-control rules can be a daunting task.
 
-Therefore, the Projects extension provides a data-model extension and a set of access-control rules that are sufficient for most use cases.
+To help with setting up access rules, the Projects extension provides a data-model extension and a set of access-control rules that are sufficient for most use cases.
 The finer details of the Projects extension can be found in [its documentation](https://fraunhoferiosb.github.io/FROST-Server/extensions/DataModel-Projects.html).
 
 #### Data Model
@@ -388,6 +388,13 @@ The other STA entities can also be connected to one or more Projects, either dir
 User-entities can be directly linked to Role-entities, or indirectly through UserProjectRole-entities.
 - If a user is directly linked to a role, the user has that role on all entities of all types.
 - If a user is indirectly linked to a role, the user has that role only on the entities linked to the project linked to the same UserProjectRole entity.
+
+Projects can be public or non-public.
+Public projects, and their related entities, can be read by users that are not related to the project.
+Non-public projects can only be read by users that have a direct role in the project.
+
+Things, Locations, Datastreams and FeaturesOfInterest have an additional `restricted` flag.
+If one of these entities is set to be restricted, that entity is not visible to users that are not in the project(s) that the entity is related to, even if (any of) those projects is public.
 
 ObservedProperty entites are shared across Projects and can thus only be edited by users with global `create`, `update` or `delete` rights.
 
