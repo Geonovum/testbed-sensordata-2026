@@ -398,6 +398,78 @@ If one of these entities is set to be restricted, that entity is not visible to 
 
 ObservedProperty entites are shared across Projects and can thus only be edited by users with global `create`, `update` or `delete` rights.
 
+## The SensorThings API version 2 data model
+
+The SensorThings API version 2.0 is currently under voting at the Open Geospatial Consortium.
+The data model of this new version has been updated in several ways, based on experience of almost ten years of use since the original SensorThings API version 1.0 was released in 2016.
+An updated data model diagram can be found in <a href="#fig-v2-datamodel"></a>, which highlights the changes.
+
+<figure id="fig-v2-datamodel">
+  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-V2-Core-changed.drawio.png" alt="SensorThings API v2.0 data model" />
+  <figcaption>SensorThings API v2.0 data model.</figcaption>
+</figure>
+
+### Definitions
+
+In STA version 1.x, the ObservedProperty has an attribute called `definition` that is meant to point to an external, authoritative source for the ObservedProperty.
+This use case, where an entity has an external, authoritative definition exists not just for ObservedProperties, but for almost all entities.
+Therefore, in STA 2.0, almost all classes have a `definition` attribute.
+
+
+### Features, FeatureTypes and ofInterest
+
+One of the most asked questions people have when starting to use STA is: "What should I use as Thing, and what as Feature?"
+Unfortunately, for STA 1.x, there was only the pragmatic answer: "The Thing has to be that which you want to attach a time-series to."
+This is because a Thing is linked to time series (Datastreams) and FeaturesOfInterest are not.
+This limitation breaks the usefulness of the Feature, and made it impossible to properly use the FeatureOfInterest in the way it was intended in the conceptual O&M Model.
+
+In the update of the OGC/ISO Observations and Measurements specification, now called Observations Measurements and Samples (OMS) the concept of Feature and its roles in relation to Observations has be clarified further.
+A Feature can have multiple roles when relating to Observations:
+- UltimateFeatureOfInterest: The largest scale Feature that is represented by an Observation.
+- ProximateFeatureOfInterest: A smaller, more precise proximate for the ultimate Feature.
+
+An example from the water domain would be that of a River, that has sampling points, where water samples are taken, on which measurements are made_
+- The River is the Ultimate Feature of Interest.
+  All measurements made on all samples taken at all sampling points ultimately say something about the water in the river.
+- The sampling points are Proximate Featurs of Interest.
+  They are a proxy for the river with a higher spatial detail.
+- The samples are Proximate Featurs of Interest for the sampling points.
+  They have a higher temporal detail and can capture processing steps made to the water before Observations are made.
+
+The river, sampling points and samples are just Features.
+They only become "ofInterest" in the context of one or more Observations.
+
+This more detailed model has been taken over in STA 2.0 as depicted in <a href="#fig-v2-features"></a>:
+
+<figure id="fig-v2-features">
+  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-V2-Features.drawio.png" alt="Feature updates in SensorThings API v2.0" />
+  <figcaption>Feature updates in SensorThings API v2.0.</figcaption>
+</figure>
+
+Features are now just named Feature, and no longer FeatureOfInterest.
+Features can now be directly linked to Datastreams, in the roles of Ultimate or ProximateFeatureOfInterest, and to Observations in the role of ProximateFeatureOfInterest.
+The relation between Observation and Feature is now optional, since it is only relevant when the Observation was made on a sample.
+Features now have one or more FeatureTypes, which makes it possible to quicky find all Features of the same type..
+
+### Observation Result Type
+
+The result attribute of an Observation in STA has always been of type `ANY`, meaning its value can be anything.
+A major problem with this is that STA version 1.x has no way to indicate what a client can expect.
+It could be a number, a string, an array, or a complex json object.
+In version 2.0 this has been improved as depicted in <a href="#fig-v2-resultType"></a>:
+
+<figure id="fig-v2-resultType">
+  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-V2-ResultType.drawio.png" alt="ResultType updates in SensorThings API v2.0" />
+  <figcaption>ResultType updates in SensorThings API v2.0.</figcaption>
+</figure>
+
+The Datastream now has two fields, `resultType` and `resultEncoding` that use the OGC SWE-Common standard to describe the exact schema of the values of the result attribute of the Observations in a Datastream.
+Because a complex Observation can involve multiple ObservedProperties, a Datastream can now be linked to multiple ObservedProperties.
+The draft specification has [examples of Datastreams](https://hylkevds.github.io/23-019/23-019.html#datastream) with simple and complex resultTypes.
+
+This change makes the MultiDatastream extension of STA 1.x obsolete, since the MultiDatastream structure can also be described by the resultType attribute.
+
+
 ## Conclusions
 
 Setting up a FROST-Server with the core SensorThings API data model is trivial.
