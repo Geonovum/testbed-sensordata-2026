@@ -119,7 +119,7 @@ only practical place for a durable identifier was a free-form key in the
 
 ```json
 "properties": {
-  "mac_address": "70:ee:50:7f:a8:b4"
+  "mac_address": "70:ee:50:7f:a8:b3"
 }
 ```
 
@@ -127,7 +127,7 @@ or:
 
 ```json
 "properties": {
-  "dev_eui": "24E124707E427324"
+  "dev_eui": "24E124707E427314"
 }
 ```
 
