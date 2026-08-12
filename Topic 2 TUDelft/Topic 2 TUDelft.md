@@ -11,7 +11,7 @@
 
 ## Executive Summary
 
-## 1. Introduction and the Scope of TU Delft's Experiments
+## Introduction and the Scope of TU Delft's Experiments
 
 Heterogeneity in the Internet of Things (IoT) is a well-documented phenomenon
 and a major source of tension when implementing IoT standards such as the
@@ -41,14 +41,13 @@ the benefits of using STA in [Section 4](#4-benefits-of-using-sta), STA v2
 findings in [Section 5](#5-sensorthings-api-v2), and recommendations in
 [Section 6](#6-recommendations).
 
-## 2. Testbed Technical Summary: IoT Providers, Networks and Sensors
+## Testbed Technical Summary: IoT Providers, Networks and Sensors
 
-TU Delft's testbed contribution connected 32 _Things_ to two testbed web
-servers implementing
-[STA v1.1](https://docs.ogc.org/is/18-088/18-088.html), and to a third server
-implementing v2.0, which presently remains a draft. _Thing_ here follows the
-STA v2 / ITU-T Y.2060 definition
-([ITU-T Y.2060](https://www.itu.int/rec/T-REC-Y.2060-201206-I)):
+TU Delft's testbed contribution connected 32 _Things_ to two testbed web servers
+implementing [STA v1.1](https://docs.ogc.org/is/18-088/18-088.html), and to a
+third server implementing v2.0, which presently remains a draft. _Thing_ here
+follows the STA v2 / ITU-T Y.2060 definition ([ITU-T
+Y.2060](https://www.itu.int/rec/T-REC-Y.2060-201206-I)):
 
 > A thing is an object of the physical world (physical things) or the
 > information world (virtual things) that is capable of being identified and
@@ -81,9 +80,9 @@ pushed to the three STA servers.
 
 Table 1 — Summary of _Things_ connected during this testbed.
 
-## 3. Tensions and Experiences in Applying the SensorThings API v1.1
+## Tensions and Experiences in Applying the SensorThings API v1.1
 
-### 3.1 IoT Heterogeneity: Managing Transformation and Ingestion
+### IoT Heterogeneity: Managing Transformation and Ingestion
 
 The message that flows downstream from an IoT device is rarely ready to fit
 neatly into STA — or into any other system or standard, for that matter. IoT
@@ -107,7 +106,7 @@ compliant.
 > an ingestion layer (whether `rime-ingest`, Node-RED, or custom middleware)
 > that owns transport, identity, and payload transformation.
 
-### 3.2 The Permanent Identity of a _Thing_
+### The Permanent Identity of a _Thing_
 
 *This issue is largely addressed in STA v2.*
 
@@ -157,7 +156,7 @@ pipeline cannot reliably reconcile upstream devices with STA _Things_.
 > the upstream network. Track STA v2 developments that formalise permanent
 > identity.
 
-### 3.3 Domain-Specific Canonical Field Enumerations and Value Codes
+### Domain-Specific Canonical Field Enumerations and Value Codes
 
 STA v1.1 is a generic standard that imposes few limits on the user. That is
 likely a feature, not a bug — but users should be aware that, within certain
@@ -187,7 +186,7 @@ names.
 > begins. Enforce that vocabulary in the pipeline rather than relying on
 > operators to choose consistent free-text labels.
 
-### 3.4 Duplication Management
+### Duplication Management
 
 STA does not impose restrictions on the creation of duplicate entities. This
 includes "partial" duplicates, where all fields except `@iot.id` are identical
@@ -205,7 +204,7 @@ before writing to a STA server.
 > and v2. Prefer idempotent writes keyed on external identity and
 > `phenomenonTime` (or an equivalent natural key).
 
-### 3.5 Equivalence and Identity
+### Equivalence and Identity
 
 Further to the previous issue, STA does not define what constitutes
 *equivalence* (equal to) or *identity* (is) between entities. Consider, for
@@ -223,7 +222,7 @@ deduplicates, and how portable the resulting graph is across STA servers.
 > "ObservedProperties are equal if `definition` URI matches"). Implement those
 > rules in middleware; do not leave them implicit in operator behaviour.
 
-### 3.6 Unassignable Features of Interest
+### Unassignable Features of Interest
 
 *This issue is resolved in STA v2.*
 
@@ -258,7 +257,7 @@ essentially cloning the `Location` entity.
 > out-of-band mapping (Thing/Datastream → FoI) in middleware. Prefer STA v2
 > where Feature–Datastream linkage is required for correct ingestion.
 
-### 3.7 Modelling Sensor Arrays
+### Modelling Sensor Arrays
 
 All _Things_ in TU Delft's testbed contribution are single physical objects
 that contain multiple sensors and are, for practical purposes, indivisible.
@@ -276,7 +275,7 @@ to treat the device as a single sensing object with multiple Datastreams
 > deployments where sensing elements are physically swappable or independently
 > calibrated.
 
-### 3.8 Usefulness and Definition of Virtual Entities
+### Usefulness and Definition of Virtual Entities
 
 _Things_ need not be physical objects; they include entities "that are capable
 of being identified and integrated into communication networks". This raises
@@ -291,7 +290,7 @@ modelling a virtual `Thing` is beneficial.
 > solely to fill schema slots; prefer documenting absence (no Location) over
 > inventing placeholder Locations.
 
-### 3.9 "Real" and "Derived" Observations
+### "Real" and "Derived" Observations
 
 *This issue was discussed on the testbed GitHub repository
 ([#3](https://github.com/Geonovum/testbed-sensordata-2026/discussions/3)).*
@@ -321,7 +320,7 @@ associated with the "raw" `Datastream` and produce "derived" `Datastreams`.
 > subclasses. Record the processing relationship in `properties` or provenance
 > metadata so consumers can trace lineage.
 
-### 3.10 Observations as Instants or Arrays
+### Observations as Instants or Arrays
 
 *This issue is largely addressed in STA v2.*
 
@@ -349,7 +348,7 @@ other result shape (e.g. JSON objects) is also valid in STA.
 > which should become the preferred way to advertise result structure to
 > clients.
 
-### 3.11 The "Connectors" Discussion
+### The "Connectors" Discussion
 
 Throughout this testbed, the term *Connectors* appeared in several discussions
 (e.g.
@@ -379,18 +378,191 @@ open.
 > devices. If Connectors (or equivalent) are modelled, document the boundary
 > between STA entities and operational secrets carefully.
 
-### 3.12 Extensions and the Future of the Standard
+### Implementing Domain Specificity in a Generic Standard 
 
-### 3.13 Enforcing Domain Specifics and System Management
+...
 
-## 4. Benefits of Using STA
+### Extensions and the Future of the Standard
 
-## 5. SensorThings API v2
+Presently STA v1 includes the
+[STAplus](https://docs.ogc.org/is/22-022r1/22-022r1.html) and the [WebSub
+Asynchronous Messaging Standard](https://docs.ogc.org/is/24-032r1/24-032r1.html)
+extensions. The former extends the data model to include concepts of ownership
+(see §6.1), especially with respect to multi-user contributions such as citizen
+science projects; while the latter is a technical extension allowing users to
+subscribe to a STA endpoint and receiving notification when the result of an
+arbitrary query changes. These extensions were not used by TU Delft during this
+testbed.
 
-## 6. Recommendations
+In this testbed, the Fraunhofer STA implementation, FROST came loaded with
+several "non-standard" management and quality of life extensions and implemented
+plugins. While TU Delft did not make direct use of any of these plugins due to
+time constraints, it was apparent during public discussions that some issues
+encountered during this testbed are at least partially addressed by them.
 
-1. Budget for an ingestion layer; STA is the contract, not the decoder.
-2. Standardise external identity keys and equivalence rules early.
+Of note was the
+[_Projects_](https://fraunhoferiosb.github.io/FROST-Server/extensions/DataModel-Projects.html)
+plugin which introduces to the data model `Users`, `Roles` and `Projects` which
+facilitates the management of the boundary between various groups pushing to a
+common STA server, as was the case in this Testbed. The
+[OpenCitySense](https://fraunhoferiosb.github.io/FROST-Server/extensions/DataModel-OpenCitySense.html)
+plugin on the other hand extended the data-model to allow for management of
+various aspects of the IoT such as sensor configurations and, from earlier,
+"Connections". OpenCitySense differs from the approach used by `rime` which was
+opted to not extend the data model in favor of a predominately file-based,
+"Gitops" approach to management.
+
+The absence of management related extensions being standardized is considered
+note worthy, and throughout this testbed we perceived that each Topic 2
+participant was developing their own management approaches. The approaches
+implemented by several partners appeared to have enough similarities to merit
+the idea that some common standard could serve the various deployments.
+
+> **Recommendation:** Standardized management extensions to the core STA could
+> allow for the development of management systems, portals and interfaces that
+> do away with the need for middleware and reduce deployment tesnsions. This
+> issue is a SWG issue rather than a implementor's issue.
+
+## Benefits of Using STA
+
+Irrespective of the relatively minor tensions described in the earlier section,
+STA, from our perspective as implementors, proved to be an effective standard
+for the management of our networks. The most notable gain vis a vis
+interoperability was seen in the development of the consumer facing
+`rime-client`, which was  able to serve results from multiple, unconnected STA
+servers simply by changing the target endpoint. 
+
+Consider client functionalities such as "health-checks", which  can leverage the
+_OData_ style querying inbuilt into the standard. A healthcheck was conceived as
+a query to each _Thing_, requesting the time of the last `Observation` posted to
+any datastream. Consider the STA service at
+https://airquality-frost.k8s.ilt-dmz.iosb.fraunhofer.de/v1.1/, which allows for
+this relatively complex query through a single URL:
+
+```url
+https://airquality-frost.k8s.ilt-dmz.iosb.fraunhofer.de/v1.1//Datastreams?
+    $select=phenomenonTime,@iot.id
+    &$expand=Thing($select=@iot.id)
+    &$top=10000
+```
+
+Which returns:
+
+```url
+{
+"value": [
+    {
+    "phenomenonTime": "2017-12-31T23:00:00Z/2026-06-10T07:00:00Z",
+    "@iot.id": 1,
+    "Thing": {
+    "@iot.id": 165
+    }
+        },
+    {
+    "phenomenonTime": "2017-12-31T23:00:00Z/2026-06-10T07:00:00Z",
+    "@iot.id": 2,
+    "Thing": {
+    "@iot.id": 165
+    },
+    ...
+}
+```
+
+The query and result remained consitent and functionaly valid across multiple
+STA servers. The client was similarly capable of displaying and placing the all
+_Things_ on a STA instance on a [leaflet](https://leafletjs.com/) map using the
+query:
+
+```url
+https://airquality-frost.k8s.ilt-dmz.iosb.fraunhofer.de/v1.1/Things?
+    $expand=Locations
+    &$top=10000
+```
+
+In the above URL, the `$expand` parameter was shown to be highly effective,
+allowing the return of related entities from a parent entity.
+
+The client may request the latest `Observation` value for a given `Datastream`
+via:
+
+```url
+https://airquality-frost.k8s.ilt-dmz.iosb.fraunhofer.de/v1.1/Datastreams(18824)
+    /Observations?
+    $top=1
+    &$orderby=phenomenonTime desc
+```
+
+... and may return any number of observations, say, for plotting by changing the
+value passed to `$top`.  
+
+The STA data model is lightweight, but found to be adequately flexible, and
+provided that implementors enforce some internal conformity to their
+datastructures, much domain complexity can be achieved by simply _soft-typing_
+certain fields such as `properties`. Besides the issue with regards to
+`FeatureOfInterest` discussed in [§3.6], navigating the data model effectively
+was straightforward. 
+
+## SensorThings API v2
+
+This targeted versions of STA were versions 1 and 1.1. STA v2, however, is known
+to on the horizon and presently up for OGC member voting at the time of writing.
+The process appears to be nearing its conclusion, so much so that the Fraunhofer
+IOSB FROST server's [v2.8 development
+snapshot](https://hub.docker.com/r/fraunhoferiosb/frost-server?tag=develop-2.x-2.8.0-SNAPSHOT)
+included support for v2. STA v2 updates the data model and the typing of some
+fields, and is thus a breaking (or "major") revision, altough it appears the
+spirit of the standard remains relatively unchanged.
+
+Several implementation tensions described in this document are targetted in
+by STA v2, most notably the issue in pertaining to
+[FeaturesOfInterest](#unassignable-features-of-interest) which is completely
+addressed and the [UUID](#the-permanent-identity-of-a-thing) issue which is
+mostly addressed.
+
+The former issue is addressed by a modification to the data model which links
+`FeatureOfInterest` directly to the `Datastream`, while the latter is partly
+solved by introducing a `definition` field to the most entities, including the
+`Thing` which allows users to at least define _what_ kind of UUID is being
+defined.
+
+During this testbed a pulblic STA v2 server was [made
+available](https://github.com/Geonovum/testbed-sensordata-2026/discussions/17).
+The `rime-ingest` pipeline was
+[modified](https://github.com/justinschembri/rime/pull/105) to support v2 of
+STA. The modifications to the pipeline to support v2 were simple, albeit
+non-trivial. The structure of the configuration files, for instance, used to
+construct the initial STA entities differed, unsuprisingly, between the two
+versions which led to configuration drift.
+
+While the ingestion pipeline did successfully and similtaneously push to both
+v1.1 and v2 STA instances from the same provider, messages, the two versions
+remain incompatible. Thus we do not recommend running parallel versions unless
+absolutely neccessary, considering migration does not in our opinion appear to
+be a significant challenge; the `rime-client` for example supports both `v1`,
+`v1.1` and `v2` with an almost identical codebase.
+
+For our experience as implementors, STA v2 offers many benefits over v1.1,
+especially with regards to an extended `OData` style querying, such as an
+extended option set for the `$filter` option up as well as the handling of some
+tensions described in this document.
+
+> **Recommendation:** Implementors should be aware of the upcoming STA v2; and
+> this version addresses some tensions described in this document and includes
+> other major improvements which are out of scope to describe here. From our
+> experience, we do not assess migration between versions to be a major
+> overhead, but is certainly involved. Thus it is recommended that implementors
+> should opt-in for one or the other versions conciously, and we recommend v2. 
+
+## Recommendations
+
+The following are the recommendations made to implementors of STA:
+
+1. Budget for an ingestion layer; STA is the contract, not the IoT manager nor
+   the decoder. While the FROST implementation provides plug-ins such as
+   _Projects_ or _OpenCitySense_, these are not standardized.
+2. Standardise internally external identity keys and equivalence rules early. We
+   recommend that a `Sensor` entity be modelled as a unique object, rather than
+   an abstract type.
 3. Enforce canonical Observed Property / Datastream vocabularies in middleware.
 4. Own duplicate prevention; do not expect the API to do it.
 5. Prefer virtual Sensors and separate Datastreams for derived series — not
