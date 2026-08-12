@@ -4,7 +4,7 @@
     "id": "color-contrast",
     "impact": "serious",
     "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=webdriverjs",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=webdriverjs",
     "nodes": [
       {
         "target": [
@@ -20,7 +20,7 @@
     "id": "scrollable-region-focusable",
     "impact": "serious",
     "description": "Ensure elements that have scrollable content are accessible by keyboard in Safari",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/scrollable-region-focusable?application=webdriverjs",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/scrollable-region-focusable?application=webdriverjs",
     "nodes": [
       {
         "target": [
@@ -35,6 +35,13 @@
         ],
         "html": "<code class=\"yaml hljs\" aria-busy=\"false\">",
         "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
+          "pre:nth-child(11) > .url.hljs"
+        ],
+        "html": "<code class=\"url hljs\" aria-busy=\"false\">https://airquality-frost.k8s.ilt-dmz.iosb.fraunhofer.de/v1.1/Datastreams(18824)\n    /Observations?\n    $top=1\n    &amp;$orderby=phenomenonTime desc\n</code>",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
       }
     ]
   },
@@ -42,8 +49,8 @@
     "url": "http://localhost:8080/snapshot.html",
     "id": "svg-img-alt",
     "impact": "serious",
-    "description": "Ensure <svg> elements with an img, graphics-document or graphics-symbol role have accessible text",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/svg-img-alt?application=webdriverjs",
+    "description": "Ensure <svg> elements with an img, image, graphics-document or graphics-symbol role have accessible text",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/svg-img-alt?application=webdriverjs",
     "nodes": [
       {
         "target": [
