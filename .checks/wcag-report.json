@@ -44,28 +44,5 @@
         "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
       }
     ]
-  },
-  {
-    "url": "http://localhost:8080/snapshot.html",
-    "id": "svg-img-alt",
-    "impact": "serious",
-    "description": "Ensure <svg> elements with an img, image, graphics-document or graphics-symbol role have accessible text",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/svg-img-alt?application=webdriverjs",
-    "nodes": [
-      {
-        "target": [
-          "#diagram-1"
-        ],
-        "html": "<svg id=\"diagram-1\" width=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width: 930px;\" viewBox=\"-50 -10 930 614\" role=\"img\" aria-labelledby=\"chart-title-diagram-1 chart-desc-diagram-1\">",
-        "failureSummary": "Fix any of the following:\n  Element child title is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
-      },
-      {
-        "target": [
-          "#diagram-2"
-        ],
-        "html": "<svg id=\"diagram-2\" width=\"100%\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width: 1702px;\" viewBox=\"-50 -10 1702 1283\" role=\"img\" aria-labelledby=\"chart-title-diagram-2 chart-desc-diagram-2\">",
-        "failureSummary": "Fix any of the following:\n  Element child title is empty\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
-      }
-    ]
   }
 ]
