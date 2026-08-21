@@ -38,6 +38,62 @@
       },
       {
         "target": [
+          "#x1-3-1-example-a-a-vendor-rest-api-sulo-on-the-reen-cms-platform > pre:nth-child(3) > .json.hljs"
+        ],
+        "html": "<code class=\"json hljs\" aria-busy=\"false\">",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
+          "pre:nth-child(5) > .json.hljs"
+        ],
+        "html": "<code class=\"json hljs\" aria-busy=\"false\">",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
+          "pre:nth-child(7) > .json.hljs"
+        ],
+        "html": "<code class=\"json hljs\" aria-busy=\"false\">",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
+          "pre:nth-child(11) > .json.hljs"
+        ],
+        "html": "<code class=\"json hljs\" aria-busy=\"false\">",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
+          "pre:nth-child(13) > .json.hljs"
+        ],
+        "html": "<code class=\"json hljs\" aria-busy=\"false\">",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
+          "pre:nth-child(4) > .json.hljs"
+        ],
+        "html": "<code class=\"json hljs\" aria-busy=\"false\">",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
+          "#x1-3-2-example-b-another-sta-server-collaborall-faithful-passthrough > pre:nth-child(6) > .json.hljs"
+        ],
+        "html": "<code class=\"json hljs\" aria-busy=\"false\">",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
+          "#x1-3-2-example-b-another-sta-server-collaborall-faithful-passthrough > pre:nth-child(8) > .json.hljs"
+        ],
+        "html": "<code class=\"json hljs\" aria-busy=\"false\">",
+        "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+      },
+      {
+        "target": [
           "pre:nth-child(11) > .url.hljs"
         ],
         "html": "<code class=\"url hljs\" aria-busy=\"false\">https://airquality-frost.k8s.ilt-dmz.iosb.fraunhofer.de/v1.1/Datastreams(18824)\n    /Observations?\n    $top=1\n    &amp;$orderby=phenomenonTime desc\n</code>",
