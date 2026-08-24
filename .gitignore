@@ -1,5 +1,2 @@
 ﻿*_log
 .idea
-.checks/*
-!.checks/*.txt
-!.checks/*.json
