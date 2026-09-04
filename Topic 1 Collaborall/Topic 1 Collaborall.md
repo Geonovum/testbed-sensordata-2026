@@ -19,8 +19,8 @@ and PostGIS — rather than deploying an existing implementation. The
 server ran throughout the testbed, ingested roughly sixteen million
 observations from real and simulated sensors during development, was
 exercised by other testbed participants against their own tooling, and
-surfaced a series of interoperability findings that only a second,
-independent implementation of the standard could reveal.
+surfaced a series of interoperability findings that only cross-testing
+between independent implementations of the standard can reveal.
 
 ## Scope
 
@@ -46,8 +46,8 @@ We built and host our own SensorThings API server — a PHP / Laravel
 package on PostgreSQL with TimescaleDB (observations hypertable) and
 PostGIS (spatial queries) — rather than deploying an existing
 implementation. This was a deliberate choice: the testbed's "maximal
-learning" objective is served better by a second, independent
-implementation of the standard than by a second FROST deployment, and it
+learning" objective is served better by an additional, independent
+implementation of the standard than by another FROST deployment, and it
 surfaced a series of interoperability findings that a
 single-implementation ecosystem would never encounter (see Lessons
 learned).
@@ -183,7 +183,7 @@ successfully as part of the delivery.
 Detailed engineering notes live in the repository
 (`docs/lessons-learned.md`, ADRs). Reported here are our observations
 on the **standard itself**, from the perspective of a party that wrote
-a second, independent implementation of it:
+an independent implementation of it from the specification:
 
 - **The standard has no notion of origin or ownership.** A `Thing` is
   only a name, a description and a free-form properties map; nothing in
@@ -213,9 +213,14 @@ a second, independent implementation of it:
   implementation maximises interoperability — which also means the
   reference implementation's behaviour has quietly become part of the
   standard.
-- **A second implementation is what makes it a standard.** Cross-testing
-  with participants' existing FROST-based tooling surfaced corner cases
-  a single-implementation ecosystem never hits: nested `$select` with
+- **Independent implementations are what make it a standard.** The
+  SensorThings API has had several implementations over the years —
+  FROST, 52°North's sensorweb-server-sta, GOST, and closed-source
+  offerings from CubeWerx and SensorUp among them — so ours is by no
+  means the second implementation of the standard as such. Within this
+  testbed, however, FROST was the only server in use, and cross-testing
+  our server against participants' FROST-based tooling surfaced corner
+  cases a single-implementation ecosystem never hits: nested `$select` with
   `@iot.id`, string-function argument order (`substringof`),
   `phenomenonTime` interval literals in `$filter`, POST via navigation
   paths, and entity discovery from the capabilities document. All were
