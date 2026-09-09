@@ -189,13 +189,13 @@ At the kick-off session we introduced Geo Insights and our co-applicant Building
 
 At session 2 the connector existed as scaffolding: 10 Things, 26 Datastreams, and 13 ObservedProperties were registered on the Brabantse Delta FROST server for The Green Village and Diergaarde Blijdorp, but no live sensor data was flowing yet; we were still waiting for real payload samples from the fieldlabs. The presentation introduced the connector architecture (FastAPI, entity registration, dead-letter replay, Node-RED bridge), demonstrated governance via the FROST Projects extension, and showed a working Tasking MVP end-to-end on the live server. Open questions posed to the audience included push-vs-pull per fieldlab location and how to populate `resultQuality` across sources with different reliability characteristics.
 
-Presentation slides: [Public session 2 slides (PDF)](Geonovum%20sensordata%20testbed%20public%20session%202%20slides.pdf)
+Presentation slides: [Public session 2 slides (PDF)](media/Geonovum%20sensordata%20testbed%20public%20session%202%20slides.pdf)
 
 ### Public session 3
 
 By session 3 the project had moved from scaffolding to live operation. Three real data sources were connected (TGV Office Lab via Kafka with 5 sensors, Ohnics air quality via REST polling with 46 sensors, and Levellog groundwater via OData with OAuth2 with 3 sensors) and observations were flowing to all three FROST targets simultaneously (Brabantse Delta v1.1, CollaborAll v1.1, and the Fraunhofer v2.0 test server). The presentation walked through the engineering problems solved since session 2 (Avro union type handling, polling deduplication, multi-server fan-out with per-target auth and versioning) and gave a live demo of the UrbanAdapt Monitoring Module, which had been expanded with features inspired by another participant's RIME Observatory. The session closed with 101 datastreams live across 2 data sources feeding 2 servers, and a roadmap for onboarding Blijdorp, EUR Campus, Living Lab Binckhaven, and AMS Institute in the coming months.
 
-Presentation slides: [Public session 3 slides (PDF)](Geonovum%20sensordata%20testbed%20public%20session%203%20slides.pdf)
+Presentation slides: [Public session 3 slides (PDF)](media/Geonovum%20sensordata%20testbed%20public%20session%203%20slides.pdf)
 
 ## Recommendations
 
@@ -213,7 +213,7 @@ Based on our experience in this testbed, we offer the following recommendations 
 
 ## References
 
-- [Tender application (PDF)](Tender_Geonovum_Topic2_Geo_Insights_and_Building_Changes.pdf)
+- [Tender application (PDF)](media/Tender_Geonovum_Topic2_Geo_Insights_and_Building_Changes.pdf)
 - [Source code repository](https://github.com/Geo-insights/sensorthings-testbed-connector) (MIT License)
 - [UrbanAdapt monitoring module](https://github.com/Geo-insights/monitoring_module)
 - [Testbed GitHub discussions](https://github.com/Geonovum/testbed-sensordata-2026/discussions) (interoperability findings filed as #22, #23, #24)

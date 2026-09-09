@@ -98,7 +98,7 @@ sequence:
 Following a brief description of the sensor
 [setup](#testbed-technical-summary-iot-providers-networks-and-sensors), this
 report focuses on the tensions encountered [in applying the SensorThings
-API](#tensions-and-experiences-in-applying-the-sensorthings-api-v11), the
+API](#tensions-and-experiences-in-applying-the-sensorthings-api-v1-1), the
 [benefits](#benefits-of-using-sta) of using STA. Altough this testbed required
 the deployment of STA v1.1, STA v2 is on the horizon and the implications of
 this revision are [explored](#sensorthings-api-v2). Finally, the findings are
