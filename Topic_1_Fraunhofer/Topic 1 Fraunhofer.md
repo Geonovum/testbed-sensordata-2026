@@ -10,7 +10,7 @@ The API consists of a data model based on the OGC/ISO _Observations and Measurem
 
 ## FROST-Server
 
-<img width="250px" align="right" alt="FROST-Server logo" style="margin: 0.3em" src="Topic_1_Fraunhofer/FROST-Server-darkgrey.svg">
+<img width="250px" align="right" alt="FROST-Server logo" style="margin: 0.3em" src="media/FROST-Server-darkgrey.svg">
 
 [FROST-Server](https://github.com/FraunhoferIOSB/FROST-Server) is the reference implementation of the SensorThings API.
 It is licensed using the LGPL 3.0 license and implements all parts of the spec.
@@ -27,7 +27,7 @@ These containers have to state and can be duplicated as required to satisfy the 
 The separate FROST-Server containers communicate with each other using a message bus, so that when an update is made through one container, the other containers are notified so they can send push notifications to any users that have subscriptions on the changed entities.
 
 <figure id="fig-deployment">
-  <img src="Topic_1_Fraunhofer/Deployment.drawio.png" alt="A typical FROST-Server deployment." />
+  <img src="media/Deployment.drawio.png" alt="A typical FROST-Server deployment." />
   <figcaption>A typical FROST-Server deployment.</figcaption>
 </figure>
 
@@ -181,7 +181,7 @@ The core data model of version 1.1 of the SensorThings API consists of 9 classes
 The following diagram shows the UML representation of the data model:
 
 <figure id="fig-sensing-data-model">
-  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-Sensing.drawio.png" alt="SensorThings API Core data model." />
+  <img src="media/Datamodel-SensorThingsApi-Sensing.drawio.png" alt="SensorThings API Core data model." />
   <figcaption>SensorThings API Core data model.</figcaption>
 </figure>
 
@@ -193,7 +193,7 @@ The standard tasking extension [OGC 17-079r1](https://docs.ogc.org/is/17-079r1/1
 The extension adds three extra classes to the SensorThings data model, shown in the figure below in orange.
 
 <figure id="fig-tasking-data-model">
-  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-Tasking.drawio.png" alt="SensorThings API Tasking data model extension." />
+  <img src="media/Datamodel-SensorThingsApi-Tasking.drawio.png" alt="SensorThings API Tasking data model extension." />
   <figcaption>SensorThings API Tasking data model extension.</figcaption>
 </figure>
 
@@ -214,7 +214,7 @@ The connector concept can then be extended to not just be a one-way ETL process,
 It can receive information about new or updated sensors from the SensorThings service, and automatically take all required registration actions in the communication infrastructure.
 
 <figure id="fig-ocs-arch">
-  <img src="Topic_1_Fraunhofer/OpenCitySense-Architecture-components-simplified.drawio.png" alt="OpenCitySense Architecture." />
+  <img src="media/OpenCitySense-Architecture-components-simplified.drawio.png" alt="OpenCitySense Architecture." />
   <figcaption>OpenCitySense Architecture.</figcaption>
 </figure>
 
@@ -233,7 +233,7 @@ To allow the representation of device management information, a data model exten
 The extended data mode is depicted in the following image.
 
 <figure id="fig-ocs-data-model">
-  <img src="Topic_1_Fraunhofer/Datamodel-OpenCitySense.drawio.png" alt="OpenCitySense Data Model." />
+  <img src="media/Datamodel-OpenCitySense.drawio.png" alt="OpenCitySense Data Model." />
   <figcaption>OpenCitySense Data Model.</figcaption>
 </figure>
 
@@ -293,7 +293,7 @@ The configDefinition of a DeviceModel may thus have three sections:
   These should be shown when creating a new DeviceModel, or when linking an existing DeviceModel to the DeviceModel of a Connector.
 
 <figure id="fig-ocs-conf">
-  <img src="Topic_1_Fraunhofer/OpenCitySense-ConfigurationDefinitions.drawio.png" alt="OpenCitySense Configuration Definitions." />
+  <img src="media/OpenCitySense-ConfigurationDefinitions.drawio.png" alt="OpenCitySense Configuration Definitions." />
   <figcaption>OpenCitySense Configuration Definitions.</figcaption>
 </figure>
 
@@ -374,7 +374,7 @@ The finer details of the Projects extension can be found in [its documentation](
 The image below shows the core STA data model in blue, with the security extension in yellow.
 
 <figure id="fig-projects-model">
-  <img src="Topic_1_Fraunhofer/Datamodel-Projects.drawio.png" alt="Projects extension data model." />
+  <img src="media/Datamodel-Projects.drawio.png" alt="Projects extension data model." />
   <figcaption>Projects extension data model.</figcaption>
 </figure>
 
@@ -405,7 +405,7 @@ The data model of this new version has been updated in several ways, based on ex
 An updated data model diagram can be found in <a href="#fig-v2-datamodel"></a>, which highlights the changes.
 
 <figure id="fig-v2-datamodel">
-  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-V2-Core-changed.drawio.png" alt="SensorThings API v2.0 data model" />
+  <img src="media/Datamodel-SensorThingsApi-V2-Core-changed.drawio.png" alt="SensorThings API v2.0 data model" />
   <figcaption>SensorThings API v2.0 data model.</figcaption>
 </figure>
 
@@ -442,7 +442,7 @@ They only become "ofInterest" in the context of one or more Observations.
 This more detailed model has been taken over in STA 2.0 as depicted in <a href="#fig-v2-features"></a>:
 
 <figure id="fig-v2-features">
-  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-V2-Features.drawio.png" alt="Feature updates in SensorThings API v2.0" />
+  <img src="media/Datamodel-SensorThingsApi-V2-Features.drawio.png" alt="Feature updates in SensorThings API v2.0" />
   <figcaption>Feature updates in SensorThings API v2.0.</figcaption>
 </figure>
 
@@ -459,7 +459,7 @@ It could be a number, a string, an array, or a complex json object.
 In version 2.0 this has been improved as depicted in <a href="#fig-v2-resultType"></a>:
 
 <figure id="fig-v2-resultType">
-  <img src="Topic_1_Fraunhofer/Datamodel-SensorThingsApi-V2-ResultType.drawio.png" alt="ResultType updates in SensorThings API v2.0" />
+  <img src="media/Datamodel-SensorThingsApi-V2-ResultType.drawio.png" alt="ResultType updates in SensorThings API v2.0" />
   <figcaption>ResultType updates in SensorThings API v2.0.</figcaption>
 </figure>
 
