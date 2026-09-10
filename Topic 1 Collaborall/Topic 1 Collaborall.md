@@ -1,4 +1,4 @@
-# Topic 1: Hosting a SensorThings API server (Collaborall)
+# Topic 1 Collaborall: Hosting a SensorThings API server
 
 ## Content
 

@@ -1,4 +1,4 @@
-# Connecting sensors to an OGC SensorThings API server
+# Topic 2 Clappform: Connecting sensors to a SensorThings API server
 
 **Geonovum Testbed 2026, topic 2: implementation report**
 

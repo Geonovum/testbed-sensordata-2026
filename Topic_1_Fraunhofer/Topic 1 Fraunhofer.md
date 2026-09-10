@@ -1,4 +1,4 @@
-# Topic 1 Fraunhofer
+# Topic 1 Fraunhofer: Hosting a SensorThings API server
 
 ## The OGC SensorThings API
 
