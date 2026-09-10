@@ -1,7 +1,5 @@
 # Topic 2 Clappform: Connecting sensors to a SensorThings API server
 
-**Geonovum Testbed 2026, topic 2: implementation report**
-
 Clappform B.V. | Version 2.0 | 28 August 2026
 
 Github Repo: [ClappFormOrg/Clappform-SensorThings](https://github.com/ClappFormOrg/Clappform-SensorThings)
