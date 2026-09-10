@@ -81,6 +81,14 @@ jobs:
       - name: Generate HTML snapshot
         run: npx --yes respec@37.3.2 --localhost --disable-sandbox --timeout 120 --src index.html --out snapshot.html
 
+      - name: Normaliseer mermaid-diagrammen in snapshot
+        run: |
+          if [ -f .github/workflows/normalize-mermaid-svg.mjs ]; then
+            node .github/workflows/normalize-mermaid-svg.mjs snapshot.html
+          else
+            echo "::warning title=Normalisatie overgeslagen::.github/workflows/normalize-mermaid-svg.mjs ontbreekt; mermaid-diagrammen zijn niet genormaliseerd."
+          fi
+
       - name: Check localized header links
         run: |
           if [ -f scripts/check-localized-header-links.mjs ]; then

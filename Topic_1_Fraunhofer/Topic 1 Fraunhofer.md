@@ -10,7 +10,7 @@ The API consists of a data model based on the OGC/ISO _Observations and Measurem
 
 ## FROST-Server
 
-<img width="250px" align="right" alt="FROST-Server logo" style="margin: 0.3em" src="media/FROST-Server-darkgrey.svg">
+<img width="250" align="right" alt="FROST-Server logo" style="margin: 0.3em" src="media/FROST-Server-darkgrey.svg">
 
 [FROST-Server](https://github.com/FraunhoferIOSB/FROST-Server) is the reference implementation of the SensorThings API.
 It is licensed using the LGPL 3.0 license and implements all parts of the spec.
