@@ -1,4 +1,4 @@
-# Topic 2 TUDelft
+# Topic 2 TUDelft: Connecting sensors to a SensorThings API server
 
 ## Acronyms and Definitions
 
