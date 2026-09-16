@@ -1,4 +1,4 @@
-# Topic 2: Connecting sensors to a SensorThings API server (Collaborall)
+# Topic 2 Collaborall: Connecting sensors to a SensorThings API server
 
 ## Content
 
