@@ -1,4 +1,4 @@
-# Topic 2 Geo Insights: Connecting Climate Adaptation Sensors to SensorThings API
+# Topic 2 Geo Insights: Connecting sensors to a SensorThings API server
 
 ## Introduction
 
