@@ -34,7 +34,7 @@ let respecConfig = {
 
   //-- TODO shortName is verplicht! (komt in de URL: kies logische afkorting)
   //-- Regel: shortName mag geen hoofdletters bevatten.
-  shortName: "testbed sensordata 2026",
+  shortName: "testbed-sensordata-2026",
   
   //edDraftURI = De URI van de draft version. Deze wordt automatisch afgeleid van de github URI; maar kan hier overschreven worden. 
 	//edDraftURI: ["https://geonovum.github.io", "/", "shortName"],
@@ -111,11 +111,10 @@ let respecConfig = {
         companyURL: "https://www.clappform.com",
       }
     ],
-,
-
+	
   // TODO: Vul de github URL in.
   //neem hier de URL van de github repository op waar het respec document in staat
-  github: "https://github.com/Geonovum/NL-ReSpec-template",
+  github: "https://github.com/Geonovum/tesbed-sensordata-2026",
 
   // Create PDF and link to file in header (optional):
   // TODO: Change the filename as preferred.
