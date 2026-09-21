@@ -3,13 +3,13 @@ let respecConfig = {
   useLabel: true,
 
   // TODO: title is verplicht! Neem hieronder de titel van het document op
-  title: "Geonovum template voor ReSpec",
+  title: "Final Report Testbed Sensordata 2026",
   //-- specStatus is verplicht! (activeer 1 van de volgende)
   // specStatus: "wv",                 // Werkversie
   //specStatus: "cv",               // Consultatieversie
   //specStatus: "vv",               // Versie ter vaststelling
-  //specStatus: "def",              // Vastgestelde versie
-  specStatus: "basis",            // Basis Document
+  specStatus: "def",              // Vastgestelde versie
+  //specStatus: "basis",            // Basis Document
 
   //-- specType is verplicht bij alle andere dan BASIS
   //specType: "NO",                 // Norm
@@ -34,14 +34,14 @@ let respecConfig = {
 
   //-- TODO shortName is verplicht! (komt in de URL: kies logische afkorting)
   //-- Regel: shortName mag geen hoofdletters bevatten.
-  shortName: "nl-respec-template",
+  shortName: "testbed sensordata 2026",
   
   //edDraftURI = De URI van de draft version. Deze wordt automatisch afgeleid van de github URI; maar kan hier overschreven worden. 
 	//edDraftURI: ["https://geonovum.github.io", "/", "shortName"],
 
   //-- publishDate is verplicht. Als je werkversie gekozen hebt  dan pakt Respec
   //-- de pushdate maar de publishDate is nog steeds verplicht.
-  publishDate: "2026-21-09",
+  publishDate: "2026-09-21",
   
   //-- publishVersion is verplicht. Hij mag wel leeg zijn [], maar niet de lege string zijn "".
   publishVersion: [],
@@ -58,22 +58,60 @@ let respecConfig = {
   editors:
     [
       {
-        name: "voornaam achternaam",
+        name: "Frank Terpstra",
+        company: "Geonovum",
+        companyURL: "https://www.geonovum.nl",
+      },
+	  {
+        name: "Linda van den Brink",
+        company: "Geonovum",
+        companyURL: "https://www.geonovum.nl",
+      },
+	  {
+        name: "Bart de Lathouwer",
         company: "Geonovum",
         companyURL: "https://www.geonovum.nl",
       }
     ],
 
   //-- de namen van de auteur(s) 
-  //-- vul in: per auteur: name:, company:, companyURL: 
+  //-- vul in: per auteur: name:, company:
+	  //-- de namen van de auteur(s)
+  //-- vul in: per auteur: name:, company:, companyURL:
   authors:
     [
       {
-        name: "voornaam achternaam",
+        name: "Frank Terpstra",
         company: "Geonovum",
         companyURL: "https://www.geonovum.nl",
+      },
+      {
+        name: "Jan Willem Kattouw",
+        company: "Collaborall",
+        companyURL: "https://collaborall.net",
+      },
+      {
+        name: "Hylke van der Schaaf",
+        company: "Fraunhofer IOSB",
+        companyURL: "https://www.iosb.fraunhofer.de",
+      },
+      {
+        name: "Justin Schembri",
+        company: "TU Delft",
+        companyURL: "https://www.tudelft.nl",
+      },
+      {
+        name: "Mathis van der Voordt",
+        company: "Geo Insights",
+        companyURL: "https://geo-insights.nl",
+      },
+      {
+        name: "Bowen Harkema",
+        company: "Clappform",
+        companyURL: "https://www.clappform.com",
       }
     ],
+,
 
   // TODO: Vul de github URL in.
   //neem hier de URL van de github repository op waar het respec document in staat
