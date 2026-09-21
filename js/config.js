@@ -114,7 +114,7 @@ let respecConfig = {
 	
   // TODO: Vul de github URL in.
   //neem hier de URL van de github repository op waar het respec document in staat
-  github: "https://github.com/Geonovum/tesbed-sensordata-2026",
+  github: "https://github.com/Geonovum/testbed-sensordata-2026",
 
   // Create PDF and link to file in header (optional):
   // TODO: Change the filename as preferred.
