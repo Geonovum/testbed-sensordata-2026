@@ -8,12 +8,15 @@
 // document en meldt vnu "Duplicate ID". Daarnaast laat mermaid interne
 // layout-attributen (`label-offset-x`/`label-offset-y`) op <g>-elementen staan;
 // die bestaan niet in SVG en leveren "Attribute ... not allowed on element g".
+// Ten slotte laat mermaid bij sommige cluster-labels het height-attribuut op
+// <foreignObject> weg, terwijl vnu width én height eist.
 //
 // Deze normalisatie:
 //   1. geeft dubbele id's binnen een inline <svg> een prefix op basis van de
 //      id van dat <svg>-element, en herschrijft alle verwijzingen ernaar
 //      (url(#id), href/xlink:href, CSS-selectors, aria-labelledby/-describedby);
-//   2. verwijdert de mermaid-interne layout-attributen.
+//   2. verwijdert de mermaid-interne layout-attributen;
+//   3. vult een ontbrekende height op <foreignObject> aan.
 //
 // Alleen de inhoud van inline <svg>-elementen wordt aangepast. Id's van
 // ReSpec zelf (sectie-ankers en dergelijke) blijven ongemoeid, zodat
@@ -25,6 +28,10 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 // Attributen die mermaid achterlaat en die niet in SVG bestaan.
 const STRIP_ATTRIBUTES = ["label-offset-x", "label-offset-y"];
+
+// Regelhoogte die mermaid zelf gebruikt voor eenregelige labels; dient als
+// waarde voor de <foreignObject>-elementen waar het height-attribuut ontbreekt.
+const FOREIGN_OBJECT_LINE_HEIGHT = "24";
 
 const ID_ATTRIBUTE = /\sid="([^"]*)"/g;
 
@@ -131,9 +138,27 @@ function stripInvalidAttributes(svg) {
   return { svg, stripped };
 }
 
+/**
+ * Vult het ontbrekende height-attribuut op <foreignObject> aan. vnu eist zowel
+ * width als height; mermaid laat height bij sommige cluster-labels weg.
+ */
+function fixForeignObjectHeight(svg) {
+  let fixed = 0;
+  const patched = svg.replace(/<foreignObject\b[^>]*>/gi, (tag) => {
+    if (/\sheight\s*=/i.test(tag)) return tag;
+    fixed += 1;
+    return tag.replace(
+      /\s*\/?>$/,
+      (end) => ` height="${FOREIGN_OBJECT_LINE_HEIGHT}"${end}`,
+    );
+  });
+  return { svg: patched, fixed };
+}
+
 function normalize(html) {
   const ranges = findSvgRanges(html);
-  if (ranges.length === 0) return { html, renamed: 0, stripped: 0, svgCount: 0 };
+  if (ranges.length === 0)
+    return { html, renamed: 0, stripped: 0, sized: 0, svgCount: 0 };
 
   const idCounts = collectIdCounts(html);
   const takenIds = new Set(idCounts.keys());
@@ -142,6 +167,7 @@ function normalize(html) {
   let cursor = 0;
   let renamed = 0;
   let stripped = 0;
+  let sized = 0;
 
   ranges.forEach((range, index) => {
     output += html.slice(cursor, range.start);
@@ -155,12 +181,16 @@ function normalize(html) {
     svg = attributeResult.svg;
     stripped += attributeResult.stripped;
 
+    const sizeResult = fixForeignObjectHeight(svg);
+    svg = sizeResult.svg;
+    sized += sizeResult.fixed;
+
     output += svg;
     cursor = range.end;
   });
 
   output += html.slice(cursor);
-  return { html: output, renamed, stripped, svgCount: ranges.length };
+  return { html: output, renamed, stripped, sized, svgCount: ranges.length };
 }
 
 const files = process.argv.slice(2);
@@ -171,7 +201,7 @@ if (files.length === 0) {
 
 for (const file of files) {
   const original = readFileSync(file, "utf8");
-  const { html, renamed, stripped, svgCount } = normalize(original);
+  const { html, renamed, stripped, sized, svgCount } = normalize(original);
 
   if (html === original) {
     console.log(`${file}: ${svgCount} inline SVG('s), niets aan te passen.`);
@@ -181,6 +211,7 @@ for (const file of files) {
   writeFileSync(file, html);
   console.log(
     `${file}: ${svgCount} inline SVG('s) genormaliseerd — ` +
-      `${renamed} dubbele id('s) herschreven, ${stripped} ongeldig(e) attribu(u)t(en) verwijderd.`,
+      `${renamed} dubbele id('s) herschreven, ${stripped} ongeldig(e) attribu(u)t(en) verwijderd, ` +
+      `${sized} ontbrekende foreignObject-height(s) aangevuld.`,
   );
 }
